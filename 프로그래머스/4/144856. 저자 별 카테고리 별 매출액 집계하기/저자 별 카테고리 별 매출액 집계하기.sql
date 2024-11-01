@@ -1,0 +1,7 @@
+select b.AUTHOR_ID, a.AUTHOR_NAME, b.CATEGORY, sum(b.PRICE * bs.SALES) as TOTAL_SALES
+from BOOK b
+join AUTHOR a on b.AUTHOR_ID = a.AUTHOR_ID
+join BOOK_SALES bs on b.BOOK_ID = bs.BOOK_ID
+where bs.SALES_DATE >= '2022-01-01' and bs.SALES_DATE < '2022-02-01'
+group by AUTHOR_ID, CATEGORY
+order by AUTHOR_ID, CATEGORY desc
